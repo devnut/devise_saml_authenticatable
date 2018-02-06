@@ -12,6 +12,7 @@ module Devise
             allowed_clock_drift: Devise.allowed_clock_drift_in_seconds,
             skip_recipient_check: true,
             skip_subject_confirmation: true,
+            skip_destination: true,
           )
         else
           false
@@ -42,6 +43,7 @@ module Devise
           allowed_clock_drift: Devise.allowed_clock_drift_in_seconds,
           skip_recipient_check: true,
           skip_subject_confirmation: true,
+          skip_destination: true,
         )
         unless @response.is_valid?
           failed_auth("Auth errors: #{@response.errors.join(', ')}")
