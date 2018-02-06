@@ -46,17 +46,17 @@ module Devise
 
           if Devise.saml_resource_validator
             if not Devise.saml_resource_validator.new.validate(resource, saml_response)
-              logger.info("User(#{auth_value}) did not pass custom validation.")
+              connection.logger.info("User(#{auth_value}) did not pass custom validation.")
               return nil
             end
           end
 
           if resource.nil?
             if Devise.saml_create_user
-              logger.info("Creating user(#{auth_value}).")
+              connection.logger.info("Creating user(#{auth_value}).")
               resource = new
             else
-              logger.info("User(#{auth_value}) not found.  Not configured to create the user.")
+              connection.logger.info("User(#{auth_value}) not found.  Not configured to create the user.")
               return nil
             end
           end
